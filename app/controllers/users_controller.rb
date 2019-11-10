@@ -4,7 +4,10 @@ class UsersController < ApplicationController
 
   def signup
     @user = User.create(user_params)
-    return redirect_to signup_path unless @user.save
+    unless @user.save
+      flash[:errors] = "Please enter valid information for signup. Account not created."
+      return redirect_to signup_path 
+    end
     session[:user_id] = @user.id
     session[:username] = @user.username
     redirect_to dashboard_url(username: @user.username)

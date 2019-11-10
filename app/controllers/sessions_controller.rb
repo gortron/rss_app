@@ -5,7 +5,10 @@ class SessionsController < ApplicationController
   def login
     @user = User.find_by(username: params[:user][:username])
     @user = @user.try(:authenticate, params[:user][:password])
-    return redirect_to login_path unless @user
+    unless @user
+      flash[:errors] = "Hm, couldn't find that username, or password incorrect."
+      return redirect_to login_path 
+    end
     session[:user_id] = @user.id
     session[:username] = @user.username
     redirect_to dashboard_path(username: @user.username)
