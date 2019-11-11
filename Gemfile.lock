@@ -143,6 +143,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
+    rss (0.2.8)
     ruby_dep (1.5.0)
     rubyzip (2.0.0)
     sass-rails (6.0.0)
@@ -210,6 +211,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.1)
+  rss
   sass-rails (>= 6)
   selenium-webdriver
   spring
