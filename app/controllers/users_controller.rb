@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def new_feed
+    byebug
     # create feed in model
     Feed.create_from_url(feed_params)
     # create posts in model
@@ -50,12 +51,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
-  def folder_params
-    params.require(:folder).permit(:name, :user_id)
-  end
+  # def folder_params
+  #   params.require(:folder).permit(:name, :user_id)
+  # end
 
   def feed_params
-    params.require(:feed).permit(:rss_url)
+    #byebug
+    params.require(:feed).permit(:link, :folder_id)
   end
 
 end

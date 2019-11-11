@@ -4,19 +4,18 @@
   <input type=submit value='logout'>
 <% end %>
 
-<%= form_tag ({controller: 'users', action: 'new_feed', method: 'post'}) do %>
-  <input type=submit value='add feed'>
-<% end %>
 
 <div>
-<h3>+ Feed</h3>
-<%= form_for @feed do |f| %>
-  <%= f.label f.link %>
-  <%= f.text_field f.link %>
-  <%= f.collection_select :folder_id, @user.folders, :id, :name %>
-  <%= f.submit %>
-<% end %>
+  <h3>+ Feed</h3>
+  <%# require "byebug" byebug %>
+  <%= form_tag ({controller: 'users', action: 'new_feed', method: 'post'}) do %>
+    <%= text_field(:feed, :link) %>
+    <%= collection_select(:feed, :folder_id, @user.folders, :id, :name) %>
+    <input type=submit value='add feed'>
+  <% end %>
 </div>
+
+
 
 <div>
   <h3>Folders > Feeds > Posts</h3>
@@ -26,11 +25,11 @@
 
     <ul>
     <% folder.feeds.each do |feed| %>
-      <li><%= feed.title %></li>
+      <li><%= link_to feed.title, feed.link %></li>
 
       <ul>
       <% feed.posts.each do |post| %>
-        <li><%= post.title %></li>
+        <li><%= link_to post.title, post.link %></li>
       <%end%>
       </ul>
 

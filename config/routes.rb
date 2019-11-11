@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/' => 'welcome#home', as: :welcome
+  post '/:username/dashboard' => 'users#new_feed'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#signup' # 'CREATE' a user
@@ -9,7 +10,8 @@ Rails.application.routes.draw do
   get '/:username/:folder' => 'users#folder_view', as: :folder
   post '/:username/:folder' => 'users#new_folder'
   get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
-  post '/:username/:folder/:feed' => 'users#new_feed'
+  #post '/:username/:folder/:feed' => 'users#new_feed'
+
   
 
   get '/login' => 'sessions#new'
