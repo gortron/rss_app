@@ -21,7 +21,7 @@
   <h3>Folders > Feeds > Posts</h3>
   <ul>
   <% @user.folders.each do |folder| %>
-    <li><%= link_to folder.name %></li>
+    <li><%= link_to folder.name, "/#{@user.username}/#{folder.name}" %></li>
 
     <ul>
     <% folder.feeds.each do |feed| %>

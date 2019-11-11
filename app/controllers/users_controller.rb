@@ -25,15 +25,13 @@ class UsersController < ApplicationController
   end
 
   def new_feed
-    byebug
-    # create feed in model
     Feed.create_from_url(feed_params)
-    # create posts in model
     redirect_to dashboard_path
   end
 
   def folder_view
-    # @folder = params[:folder]
+    @folder = current_user.folders.find_by(name: params[:folder])
+    #byebug
   end
 
   def feed_view
@@ -56,7 +54,6 @@ class UsersController < ApplicationController
   # end
 
   def feed_params
-    #byebug
     params.require(:feed).permit(:link, :folder_id)
   end
 
