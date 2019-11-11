@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   def new
   end
 
-  def signup
+  def signup # this is our 'CREATE'
+    # let's add a check here to see if username is already taken
     @user = User.create(user_params)
     unless @user.save
       flash[:errors] = "Please enter valid information for signup. Account not created."
@@ -14,6 +15,15 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+  end
+
+  def folder_view
+    @folder = params[:folder]
+  end
+
+  def feed_view
+    @folder = params[:folder]
+    @feed = params[:feed]
   end
 
   private

@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   get '/' => 'welcome#home', as: :welcome
 
   get '/signup' => 'users#new'
-  post '/signup' => 'users#signup'
+  post '/signup' => 'users#signup' # 'CREATE' a user
   get '/:username/dashboard' => 'users#dashboard', as: :dashboard
+  get '/:username/:folder' => 'users#folder_view', as: :folder
+  get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
 
   get '/login' => 'sessions#new'
-  post '/login' => 'sessions#login'
+  post '/login' => 'sessions#login' # 'CREATE' a session
   post '/logout' => 'sessions#destroy'
 
   # Example of regular route:
