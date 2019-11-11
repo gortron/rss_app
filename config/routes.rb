@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   post '/signup' => 'users#signup' # 'CREATE' a user
   get '/:username/dashboard' => 'users#dashboard', as: :dashboard
   get '/:username/:folder' => 'users#folder_view', as: :folder
+  post '/:username/:folder' => 'users#new_folder'
   get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
+  post '/:username/:folder/:feed' => 'users#new_feed'
+  
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#login' # 'CREATE' a session
