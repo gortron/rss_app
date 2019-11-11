@@ -10,15 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_09_174950) do
+ActiveRecord::Schema.define(version: 2019_11_11_100204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.string "description"
+    t.string "img_url"
+    t.integer "folder_id"
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "link"
+    t.string "description"
+    t.string "author_name"
+    t.datetime "published_time"
+    t.integer "feed_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "name"
   end
 
 end
