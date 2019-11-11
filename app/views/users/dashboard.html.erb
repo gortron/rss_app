@@ -3,3 +3,39 @@
 <%= form_tag ({controller: 'sessions', action: 'destroy', method: 'post'}) do %>
   <input type=submit value='logout'>
 <% end %>
+
+
+<div>
+  <h3>+ Feed</h3>
+  <%# require "byebug" byebug %>
+  <%= form_tag ({controller: 'users', action: 'new_feed', method: 'post'}) do %>
+    <%= text_field(:feed, :link) %>
+    <%= collection_select(:feed, :folder_id, @user.folders, :id, :name) %>
+    <input type=submit value='add feed'>
+  <% end %>
+</div>
+
+
+
+<div>
+  <h3>Folders > Feeds > Posts</h3>
+  <ul>
+  <% @user.folders.each do |folder| %>
+    <li><%= link_to folder.name, "/#{@user.username}/#{folder.name}" %></li>
+
+    <ul>
+    <% folder.feeds.each do |feed| %>
+      <li><%= link_to feed.title, feed.link %></li>
+
+      <ul>
+      <% feed.posts.each do |post| %>
+        <li><%= link_to post.title, post.link %></li>
+      <%end%>
+      </ul>
+
+    <%end%>
+    </ul>
+
+  <%end%>
+  </ul>
+</div>

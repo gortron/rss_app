@@ -15,20 +15,46 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    set_user
+    @feed = Feed.new # this is to allow for a form_for @feed in dashboard
+  end
+
+  def new_folder
+    Folder.create(folder_params)
+    redirect_to dashboard_path
+  end
+
+  def new_feed
+    Feed.create_from_url(feed_params)
+    redirect_to dashboard_path
   end
 
   def folder_view
-    @folder = params[:folder]
+    @folder = current_user.folders.find_by(name: params[:folder])
+    #byebug
   end
 
   def feed_view
-    @folder = params[:folder]
-    @feed = params[:feed]
+    # @folder = params[:folder]
+    # @feed = params[:feed]
   end
 
   private
   
+  def set_user
+    @user = User.find(session[:user_id])
+  end
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
+
+  # def folder_params
+  #   params.require(:folder).permit(:name, :user_id)
+  # end
+
+  def feed_params
+    params.require(:feed).permit(:link, :folder_id)
+  end
+
 end

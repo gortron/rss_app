@@ -2,12 +2,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/' => 'welcome#home', as: :welcome
+  post '/:username/dashboard' => 'users#new_feed'
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#signup' # 'CREATE' a user
-  get '/:username/dashboard' => 'users#dashboard', as: :dashboard
-  get '/:username/:folder' => 'users#folder_view', as: :folder
+  get '/:username/dashboard' => 'users#dashboard', as: :dashboard # dashboard_path
+  #get '/:username/dashboard/:folder' => 'users#folder_view', as: :folder # folder_path
+  get '/:username/:folder' => 'users#folder_view', as: :folder # folder_path
+  # post '/:username/:folder' => 'users#new_folder'
   get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
+  # post '/:username/:folder/:feed' => 'users#new_feed'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#login' # 'CREATE' a session

@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    <div>Current Session for: <%= session[:username] ||= "NO USER" %></div>
-    <div>Current Errors: <%= flash[:errors] ||= "✅"%> </div>
+    <div>Current Session for: <%= session[:username] || "NO USER" %></div>
+    <div>Current Errors: <%= flash[:errors] || "✅"%> </div>
     <%= yield %>
   </body>
 </html>
