@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Folder.destroy_all
+# Feed.destroy_all
+# Post.destroy_all
+# Bookmark.destroy_all
 Folder.destroy_all
 Feed.destroy_all
 Post.destroy_all
@@ -22,6 +26,7 @@ open(url) do |rss|
     img_url: feed.image.url,
     folder_id: folder.id
   })
+  byebug
   #puts "Title: #{feed.channel.title}"
   feed.items.each do |post|
     Post.create({
