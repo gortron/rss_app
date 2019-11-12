@@ -1,4 +1,4 @@
-<h1> Login Page </h1>
+<%= render 'login_form'%>
   
 <%= form_for @user, url: '/login', method: :post do |f| %>
   <%= f.label :username %>
