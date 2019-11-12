@@ -1,0 +1,20 @@
+<%# More info: https://www.w3schools.com/bootstrap/bootstrap_navbar.asp %>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">🐻 gRSSly</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+      <% if session[:user_id] %>
+        <a class="nav-item nav-link" href="#">Add Feed 📰</a>
+        <a class="nav-item nav-link" href="/dashboard">Dashboard 🗂</a>
+        <a class="nav-item nav-link" href="/settings">Settings 🎛</a>
+        <a class="nav-item nav-link" href="/logout">Logout ✌🏼</a>
+      <% else %>  
+        <a class="nav-item nav-link" href="/login">Login 🛎</a>
+        <a class="nav-item nav-link" href="/signup">Sign Up 🗳</a>
+      <%end%>
+    </div>
+  </div>
+</nav>

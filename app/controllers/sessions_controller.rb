@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     redirect_to dashboard_path(username: @user.username)
   end
 
-  def destroy
+  def destroy # POST - logout_path
     session.delete :user_id
     session.delete :username
     redirect_to welcome_path
