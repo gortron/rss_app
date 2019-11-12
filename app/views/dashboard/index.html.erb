@@ -6,7 +6,7 @@
 
 <div>
   <h3>+ Feed</h3>
-  <%= form_tag ({controller: 'users', action: 'new_folder_or_feed', method: 'post'}) do %>
+  <%= form_tag ({controller: 'dashboard', action: 'new_folder_or_feed', method: 'post'}) do %>
     <label>Feed URL: </label>
     <%= text_field(:feed, :link) %><br>
     <label>Folder Name: </label>
