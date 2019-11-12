@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#login'           # 'CREATE' a session
   post '/logout' => 'sessions#destroy'        # stops session
 
-  get '/dashboard' => 'dashboard#main', as: :dashboard # dashboard_path
+  get '/dashboard' => 'dashboard#index', as: :dashboard # dashboard_path
   post '/dashboard' => 'dashboard#new_folder_or_feed'
 
-  get '/settings' => 'setting#main'
+  get '/settings' => 'settings#index'
 
 
   
