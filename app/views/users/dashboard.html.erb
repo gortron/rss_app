@@ -35,12 +35,25 @@
       <ul>
     </div>
     <div class="col-md-8 bg-light text-dark">
+      <!-- 
       <h3>Posts</h3>
       <ul>
       <% @user.posts.each do |post| %>
         <li><%= link_to post.title, post.link, class: "text-body" %></li>
       <%end%>
       </ul>
+      -->
+
+      <% @user.posts.each do |post| %>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"> <%= post.title %> </h5>
+            <h6 class="card-text text-muted" > <%= post.feed.title %> </h6>
+            <p class="card-text"> <%=raw post.description %> </p>
+            <%# link_to post.title, post.link, class: "text-body" %>
+          </div>
+        </div>
+      <%end%>
     </div>
   </div>
 </div>
