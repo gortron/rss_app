@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#index', as: :dashboard # dashboard_path
   post '/dashboard' => 'dashboard#new_folder_or_feed'
   post '/dashboard/refresh' => 'dashboard#refresh', as: :refresh
- # get '/:username/:folder' => 'dashboard#folder_view', as: :folder
+  get '/:username/:folder' => 'dashboard#folder_view', as: :folder
 
   get '/settings' => 'settings#index'
 
