@@ -14,6 +14,11 @@ class DashboardController < ApplicationController
     @posts = @folder.posts.order('published_time DESC').limit(25)
   end
 
+  def refresh
+    current_user.folders.each {|folder| folder.refresh_feeds}
+    redirect_to dashboard_path
+  end
+
 #   def feed_view
 #     # @folder = params[:folder]
 #     # @feed = params[:feed]
