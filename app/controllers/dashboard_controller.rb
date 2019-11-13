@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
 
   def index
     @user = User.find(session[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.order('published_time DESC')
     #feeds for dashboard
   end
 
@@ -10,7 +10,7 @@ class DashboardController < ApplicationController
     @user = current_user
     @folder = current_user.folders.find_by(name: params[:folder])
     @feeds = @folder.feeds
-    @posts = @folder.posts
+    @posts = @folder.posts.order('published_time DESC')
   end
 
 #   def feed_view

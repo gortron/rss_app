@@ -16,27 +16,8 @@ Bookmark.destroy_all
 
 folder = Folder.create({name: 'Tech Blogs', user_id: 11})
 
-url = 'https://www.engadget.com/rss.xml'
-open(url) do |rss|
-  feed = RSS::Parser.parse(rss)
-  our_feed = Feed.create({
-    title: feed.channel.title,
-    link: feed.channel.link,
-    description: feed.channel.description,
-    img_url: feed.image.url,
-    folder_id: folder.id
-  })
-  byebug
-  #puts "Title: #{feed.channel.title}"
-  feed.items.each do |post|
-    Post.create({
-      title: post.title,
-      link: post.link,
-      description: post.description,
-      author_name: post.dc_creator,
-      published_time: post.pubDate,
-      feed_id: our_feed.id
-    })
-    #puts "Item: #{item.title}"
-  end
-end
+Feed.create_from_url({'link' => 'https://www.engadget.com/rss.xml', 'folder_id' => folder.id})
+Feed.create_from_url({'link' => 'https://feeds.feedburner.com/TechCrunch/', 'folder_id' => folder.id})
+Feed.create_from_url({'link' => 'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml', 'folder_id' => folder.id})
+
+
