@@ -15,6 +15,37 @@ class UsersController < ApplicationController
     redirect_to login_path
   end
 
+  def update_pw #post route form change form
+    @user = current_user
+    @user = @user.try(:authenticate, params[:user][:old_password])
+
+    unless @user
+       flash[:errors] = "Incorrect Password: Please reenter your old password."
+       return redirect_to settings_path
+    end
+
+    unless  params[:user][:password] == params[:user][:password_confirmation]
+      flash[:errors] = "Password and Confirmation don't match."
+      return redirect_to settings_path
+    end
+
+    @user.update(user_params)
+    redirect_to settings_path #maybe to somewhere else
+  end
+
+  def update #post route form change form
+    @user = current_user
+    @user = @user.try(:authenticate, params[:user][:password])
+    unless @user
+       flash[:errors] = "Incorrect Password: Please reenter your password."
+       return redirect_to settings_path
+    end
+
+    @user.update(user_params)
+  
+    redirect_to settings_path #maybe to somewhere else
+  end
+
   def delete
     #user = set_user
     #user.destroy
@@ -31,5 +62,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
+  def password_update_params
+    params.require(:user).permit(:password, :password_confirmation)
+  end
 
 end
