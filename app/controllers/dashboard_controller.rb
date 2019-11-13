@@ -1,8 +1,9 @@
 class DashboardController < ApplicationController
 
   def index
-    @user = User.find(session[:user_id])
-    @posts = @user.posts.order('published_time DESC')
+    @user = current_user
+    @folders = current_user.folders
+    @posts = @user.posts.order('published_time DESC').limit(25)
     #feeds for dashboard
   end
 
@@ -10,7 +11,7 @@ class DashboardController < ApplicationController
     @user = current_user
     @folder = current_user.folders.find_by(name: params[:folder])
     @feeds = @folder.feeds
-    @posts = @folder.posts.order('published_time DESC')
+    @posts = @folder.posts.order('published_time DESC').limit(25)
   end
 
 #   def feed_view
@@ -21,10 +22,9 @@ class DashboardController < ApplicationController
 
 
   def new_folder_or_feed
-    byebug
     folder = Folder.find_or_create_by(name: params[:folder][:name], user_id: session[:user_id])
-    feed = Feed.create_from_url({"link" => params[:feed][:link], "folder_id" => folder.id})
-    #Feed.create_from_url(feed_params)
+    feed = Feed.new
+    feed.build_from_url({"link" => params[:feed][:link], "folder_id" => folder.id})
     redirect_to dashboard_path
   end
 
