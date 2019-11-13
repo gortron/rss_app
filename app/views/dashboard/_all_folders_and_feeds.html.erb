@@ -4,7 +4,7 @@
       <a href="<%="/#{@user.username}/#{folder.name}"%>"><h5 class="card-title text-muted"> <%= folder.name %></h5></a> 
       <% folder.feeds.each do |feed| %>
         <div class="card-text">
-          <a href="<%="/#{@user.username}/#{feed.title}"%>"><p class="text-muted"><%= feed.title %></p></a>
+          <a href="<%="/#{@user.username}/#{feed.title}"%>"><p class="text-muted">⏺ <%= feed.title %></p></a>
         </div>
       <%end%>
     </div>
