@@ -2,12 +2,32 @@
 
 <div>
   <h3>Add Feed</h3>
-  <%= form_tag ({controller: 'dashboard', action: 'new_folder_or_feed', method: 'post'}) do %>
-    <label>Feed URL: </label>
-    <%= text_field(:feed, :link) %><br>
-    <label>Folder Name: </label>
-    <%= text_field(:folder, :name) %><br>
-    <%= collection_select(:feed, :folder_id, @user.folders, :id, :name) %>
-    <input type=submit value='add feed'>
-  <% end %>
+
+<div class="card">
+  <div class="card-body">
+    <%= form_tag ({controller: 'dashboard', action: 'new_folder_or_feed', method: 'post'}) do %>
+       
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-5">
+            <label>Feed URL: </label>
+            <%= text_field(:feed, :link) %>
+          </div>
+        </div>
+      </div> 
+
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-5">
+            <label>Folder Name: </label>
+            <%= collection_select(:feed, :folder_id, @user.folders, :id, :name) %>
+            <%= text_field(:folder, :name) %><br>
+          </div>
+        </div>
+      </div> 
+        
+        <input type=submit value='add feed'>
+      <% end %>
+
+
 </div>
