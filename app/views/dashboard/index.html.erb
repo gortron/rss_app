@@ -22,38 +22,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-4 bg-secondary text-white">
-      <h3>Folders > Feeds</h3>
-      <ul>
-      <% @user.folders.each do |folder| %>
-        <li><%= link_to folder.name, "/#{@user.username}/#{folder.name}", class: "text-light"%></li>
-        <ul>
-        <% folder.feeds.each do |feed| %>
-          <li><%= link_to feed.title, feed.link, class: "text-light" %></li>
-        <%end%>
-        </ul>
-      <%end%>
-      <ul>
+      <%= render "all_folders_and_feeds"%>
     </div>
     <div class="col-md-8 bg-light text-dark">
-      <!-- 
-      <h3>Posts</h3>
-      <ul>
-      <% @user.posts.each do |post| %>
-        <li><%= link_to post.title, post.link, class: "text-body" %></li>
-      <%end%>
-      </ul>
-      -->
-
-      <% @user.posts.each do |post| %>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"> <%= post.title %> </h5>
-            <h6 class="card-text text-muted" > <%= post.feed.title %> </h6>
-            <p class="card-text"> <%=raw post.description %> </p>
-            <%# link_to post.title, post.link, class: "text-body" %>
-          </div>
-        </div>
-      <%end%>
+      <%= render "posts" %>
     </div>
   </div>
 </div>
