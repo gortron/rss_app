@@ -27,6 +27,7 @@ class DashboardController < ApplicationController
 
 
   def new_folder_or_feed
+    byebug
     folder = Folder.find_or_create_by(name: params[:folder][:name], user_id: session[:user_id])
     feed = Feed.new
     feed.build_from_url({"link" => params[:feed][:link], "folder_id" => folder.id})
