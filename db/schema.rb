@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_100204) do
+ActiveRecord::Schema.define(version: 2019_11_13_102447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_100204) do
     t.string "description"
     t.string "img_url"
     t.integer "folder_id"
+    t.string "rss_link"
   end
 
   create_table "folders", force: :cascade do |t|

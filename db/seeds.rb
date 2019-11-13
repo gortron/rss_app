@@ -15,9 +15,11 @@ Post.destroy_all
 Bookmark.destroy_all
 
 folder = Folder.create({name: 'Tech Blogs', user_id: 11})
-
-Feed.create_from_url({'link' => 'https://www.engadget.com/rss.xml', 'folder_id' => folder.id})
-Feed.create_from_url({'link' => 'https://feeds.feedburner.com/TechCrunch/', 'folder_id' => folder.id})
-Feed.create_from_url({'link' => 'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml', 'folder_id' => folder.id})
+f1 = Feed.new
+f2 = Feed.new
+f3 = Feed.new
+f1.build_from_url({'link' => 'https://www.engadget.com/rss.xml', 'folder_id' => folder.id})
+f2.build_from_url({'link' => 'https://feeds.feedburner.com/TechCrunch/', 'folder_id' => folder.id})
+f3.build_from_url({'link' => 'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml', 'folder_id' => folder.id})
 
 
