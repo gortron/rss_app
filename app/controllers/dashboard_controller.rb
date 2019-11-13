@@ -2,13 +2,16 @@ class DashboardController < ApplicationController
 
   def index
     @user = User.find(session[:user_id])
+    @posts = @user.posts
     #feeds for dashboard
   end
 
-#   def folder_view
-#     @folder = current_user.folders.find_by(name: params[:folder])
-#     #byebug
-#   end
+  def folder_view
+    @user = current_user
+    @folder = current_user.folders.find_by(name: params[:folder])
+    @feeds = @folder.feeds
+    @posts = @folder.posts
+  end
 
 #   def feed_view
 #     # @folder = params[:folder]
@@ -24,6 +27,8 @@ class DashboardController < ApplicationController
     #Feed.create_from_url(feed_params)
     redirect_to dashboard_path
   end
+
+  private
 
   def folder_params
     params.require(:folder).permit(:name, :user_id)
