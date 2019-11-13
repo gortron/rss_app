@@ -16,15 +16,19 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#index', as: :dashboard # dashboard_path
   post '/dashboard' => 'dashboard#new_folder_or_feed'
   post '/dashboard/refresh' => 'dashboard#refresh', as: :refresh
-  get '/:username/:folder' => 'dashboard#folder_view', as: :folder
+ # get '/:username/:folder' => 'dashboard#folder_view', as: :folder
 
   get '/settings' => 'settings#index'
+
+  get '/feeds' => 'feeds#new'
+  post '/add_feed' => 'feeds#create'
+
 
 
   
   #get '/:username/:folder' => 'users#folder_view', as: :folder # folder_path
   # post '/:username/:folder' => 'users#new_folder'
-  get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
+  #get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
   # post '/:username/:folder/:feed' => 'users#new_feed'
 
   
