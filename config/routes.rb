@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'                # sign-up page
   post '/signup' => 'users#create'            # create user > link to session start
   post '/delete_account' => 'users#destroy'   # delete user
+  post '/update' => 'users#update'            # update user details
+  post '/update_pw' => 'users#update_pw'            # update user details
 
   get '/login' => 'sessions#new'              # login page
   post '/login' => 'sessions#login'           # 'CREATE' a session
