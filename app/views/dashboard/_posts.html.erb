@@ -2,9 +2,13 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title"> <%= post.title %> </h5>
-      <h6 class="card-text text-muted" > <%= post.feed.title %> </h6>
+      <a href="<%=post.feed.link%>" target="_blank"> <h6 class="card-text text-muted" > <%= post.feed.title %> </h6></a>
       <p class="card-text"> <%# post.published_time %> </p>
-      <p class="card-text"> <%#raw post.description %> </p>
+      <p class="card-text"> <%= raw post.description %></p>
+      <div class="text-center">
+        <a class="btn btn-light btn-sm" href="<%= post.link %>" role="button" target="_blank"> Read More</a>
+      </div>
     </div>
+    </<a>
   </div>
 <%end%>
