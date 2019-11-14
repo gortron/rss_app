@@ -45,15 +45,30 @@ class UsersController < ApplicationController
   end
 
   def delete
-    #user = set_user
-    #user.destroy
+    current_user
+
+    @user = @user.try(:authenticate, params[:user][:password])
+    unless @user
+       flash[:errors] = "Incorrect Password: Please reenter your password."
+       return redirect_to settings_path
+    end
+  
+    @user.folders.each do |folder|
+      folder.folder_feeds.destroy_all
+      folder.destroy
+    end
+    
+    @user.destroy
+    
+    flash[:errors] = "Account deleted."
+    reset_session
     redirect_to welcome_path
   end
 
   private
   
   def user_params
-    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
   end
 
   def password_update_params

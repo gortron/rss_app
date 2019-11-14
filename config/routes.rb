@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'                # sign-up page
   post '/signup' => 'users#create'            # create user > link to session start
-  post '/delete_account' => 'users#destroy'   # delete user
+  delete '/delete' => 'users#delete'          # delete user
   post '/update' => 'users#update'            # update user details
   post '/update_pw' => 'users#update_pw'            # update user details
 
@@ -13,7 +13,16 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#login'           # 'CREATE' a session
   post '/logout' => 'sessions#destroy'        # stops session
 
+  get '/feed' => 'feeds#new'                     # new feed form
+  post '/new_feed' => 'feeds#create_feed'        # add new feed to database
+  post '/edit_feed' => 'feeds#edit_feed'        # add new feed to database
+  
+  post '/new_folder' => 'feeds#create_folder'       # add new folder to database
+  post '/edit_folder' => 'feeds#edit_folder'        # edit folder
+  delete '/delete_folder' => 'feeds#delete_folder', as: :delete_folder # add new feed to database
+
   get '/dashboard' => 'dashboard#index', as: :dashboard # dashboard_path
+  
   post '/dashboard' => 'dashboard#new_folder_or_feed'
   post '/dashboard/refresh' => 'dashboard#refresh', as: :refresh
   get '/:username/:folder' => 'dashboard#folder_view', as: :folder
