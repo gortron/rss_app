@@ -8,9 +8,9 @@ class FeedsController < ApplicationController
     end
 
     def create_feed
-      feed = Feed.new
-      feed.build_from_url({"link" => feed_params[:link], "folder_id" => feed_params[:folder_id]})
-      flash[:errors] = "New Feed #{feed.title} created."
+      folder = Folder.find(params[:feed][:folder_id])
+      folder.add_feed(params[:feed][:link])
+      flash[:errors] = "Feed added to #{folder.name}."
       redirect_to dashboard_path
     end
 

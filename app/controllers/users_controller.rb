@@ -44,15 +44,16 @@ class UsersController < ApplicationController
   end
 
   def delete
-    set_user
+    current_user
     #folder_ids = set_user.folders.map do |feed| feed.id end
     #feed_ids = set_user.feeds.map do |feed| feed.id end
     #post_ids = set_user.posts.map do |feed| feed.id end
-    #byebug
-
-    Post.where(name: ...).destroy.all
- 
-
+  
+    @user.folders.each do |folder|
+      folder.feeds.each do |feed|
+        feed.posts.clear
+      end
+    end
     
    # @user.posts.each do |post| Post.find(post.id).destroy end
    # @user.feeds.each do |feed| Feed.find(feed.id).destroy end
@@ -70,11 +71,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-<<<<<<< HEAD
     params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
-=======
-    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
->>>>>>> development
   end
 
   def password_update_params
