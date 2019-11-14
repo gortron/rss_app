@@ -14,7 +14,8 @@ Feed.destroy_all
 Post.destroy_all
 Bookmark.destroy_all
 
-folder = Folder.create({name: 'Tech Blogs', user_id: 11})
+user = User.create(name: 'test', username: 'testuser', email: 'testemail', password: 'test', paassword_confirmation: "test")
+folder = Folder.create({name: 'Tech Blogs', user_id: user.id})
 f1 = Feed.new
 f2 = Feed.new
 f3 = Feed.new

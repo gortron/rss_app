@@ -26,12 +26,15 @@ class DashboardController < ApplicationController
 
 
 
-  def new_folder_or_feed
-    folder = Folder.find_or_create_by(name: params[:folder][:name], user_id: session[:user_id])
-    feed = Feed.new
-    feed.build_from_url({"link" => params[:feed][:link], "folder_id" => folder.id})
-    redirect_to dashboard_path
-  end
+  # def new_folder_or_feed
+  #   if params[:folder]==nil
+  #   folder = Folder.find_or_create_by(name: params[:folder][:name], user_id: session[:user_id])
+  #   end
+  #   feed = Feed.new
+  #   feed.build_from_url({"link" => params[:feed][:link], "folder_id" => folder.id})
+    
+  #   redirect_to dashboard_path
+  # end
 
   private
 

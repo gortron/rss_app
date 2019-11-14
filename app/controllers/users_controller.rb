@@ -47,8 +47,18 @@ class UsersController < ApplicationController
   end
 
   def delete
-    #user = set_user
-    #user.destroy
+    set_user
+    #folder_ids = set_user.folders.map do |feed| feed.id end
+    #feed_ids = set_user.feeds.map do |feed| feed.id end
+    #post_ids = set_user.posts.map do |feed| feed.id end
+    #byebug
+ 
+    @user.posts.each do |post| Post.find(post.id).destroy end
+    @user.feeds.each do |feed| Feed.find(feed.id).destroy end
+    @user.folders.each do |folder| Folder.find(folder.id).destroy end
+    User.find(@user.id).destroy
+    flash[:errors] = "Account deleted."
+    reset_session
     redirect_to welcome_path
   end
 
@@ -59,7 +69,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
   end
 
   def password_update_params
