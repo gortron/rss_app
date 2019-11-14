@@ -45,6 +45,12 @@ class UsersController < ApplicationController
 
   def delete
     current_user
+
+    @user = @user.try(:authenticate, params[:user][:password])
+    unless @user
+       flash[:errors] = "Incorrect Password: Please reenter your password."
+       return redirect_to settings_path
+    end
   
     @user.folders.each do |folder|
       folder.folder_feeds.destroy_all
