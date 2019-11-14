@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
 
     unless @user.save
-      flash[:errors] = "Please enter valid information for signup. Account not created."
+      flash[:errors] = @user.errors.full_messages.to_sentence
       return redirect_to signup_path 
     end
 
