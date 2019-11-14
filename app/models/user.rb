@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :folders
+  has_many :folder_feeds, through: :folders
   has_many :feeds, through: :folders
   has_many :posts, through: :feeds
   has_many :bookmarks
@@ -13,6 +14,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, format: { without: /\s/, message: "Username must contain no spaces" }
+  validates :password, length: { minimum: 8 }
   has_secure_password
 
   

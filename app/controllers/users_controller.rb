@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       flash[:errors] = @user.errors.full_messages.to_sentence
       return render :new
     end
+    flash[:errors] = "Account created! Please re-enter your credentials. No 🤖s allowed."
     redirect_to login_path
   end
 
@@ -51,10 +52,6 @@ class UsersController < ApplicationController
 
   private
   
-  def set_user
-    @user = User.find(session[:user_id])
-  end
-
   def user_params
     params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
   end
