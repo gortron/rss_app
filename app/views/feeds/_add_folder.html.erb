@@ -1,0 +1,16 @@
+
+
+        <%= form_tag ({controller: 'feeds', action: 'create_folder', method: 'post'}) do %>
+                
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-5">
+                        <label>Folder Name: </label>
+                        <%= text_field(:folder, :name) %>
+                    </div>
+                </div>
+            </div> 
+
+            <input type=submit value='add folder'>
+
+        <% end %>
