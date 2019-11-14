@@ -45,20 +45,14 @@ class UsersController < ApplicationController
 
   def delete
     current_user
-    #folder_ids = set_user.folders.map do |feed| feed.id end
-    #feed_ids = set_user.feeds.map do |feed| feed.id end
-    #post_ids = set_user.posts.map do |feed| feed.id end
   
     @user.folders.each do |folder|
-      folder.feeds.each do |feed|
-        feed.posts.clear
-      end
+      folder.folder_feeds.destroy_all
+      folder.destroy
     end
     
-   # @user.posts.each do |post| Post.find(post.id).destroy end
-   # @user.feeds.each do |feed| Feed.find(feed.id).destroy end
-   # @user.folders.each do |folder| Folder.find(folder.id).destroy end
-    User.find(@user.id).destroy
+    @user.destroy
+    
     flash[:errors] = "Account deleted."
     reset_session
     redirect_to welcome_path
