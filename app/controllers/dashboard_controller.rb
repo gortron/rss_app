@@ -3,6 +3,9 @@ class DashboardController < ApplicationController
   def index
     @folders = current_user.folders
     @posts = @user.posts.order('published_time DESC').limit(25)
+    if @folders.empty?
+      redirect_to add_feed_path
+    end
   end
 
   def folder_view
