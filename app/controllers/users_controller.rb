@@ -52,10 +52,14 @@ class UsersController < ApplicationController
     #feed_ids = set_user.feeds.map do |feed| feed.id end
     #post_ids = set_user.posts.map do |feed| feed.id end
     #byebug
+
+    Post.where(name: ...).destroy.all
  
-    @user.posts.each do |post| Post.find(post.id).destroy end
-    @user.feeds.each do |feed| Feed.find(feed.id).destroy end
-    @user.folders.each do |folder| Folder.find(folder.id).destroy end
+
+    
+   # @user.posts.each do |post| Post.find(post.id).destroy end
+   # @user.feeds.each do |feed| Feed.find(feed.id).destroy end
+   # @user.folders.each do |folder| Folder.find(folder.id).destroy end
     User.find(@user.id).destroy
     flash[:errors] = "Account deleted."
     reset_session
