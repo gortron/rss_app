@@ -5,7 +5,7 @@ class CreateFeeds < ActiveRecord::Migration[6.0]
       t.string :link
       t.string :description
       t.string :img_url
-      t.integer :folder_id
+      t.timestamps
     end
   end
 end

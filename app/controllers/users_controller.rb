@@ -4,14 +4,11 @@ class UsersController < ApplicationController
   end
 
   def create # this is our 'CREATE'
-    # let's add a check here to see if username is already taken
     @user = User.create(user_params)
-
     unless @user.save
-      flash[:errors] = "Please enter valid information for signup. Account not created."
+      flash[:errors] = @user.errors.full_messages.to_sentence
       return redirect_to signup_path 
     end
-
     redirect_to login_path
   end
 
@@ -73,7 +70,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
+<<<<<<< HEAD
     params.require(:user).permit(:username, :name, :email, :password, :password_confirmation)
+=======
+    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+>>>>>>> development
   end
 
   def password_update_params
