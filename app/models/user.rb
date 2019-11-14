@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # Validations
   has_secure_password
   validates :name, length: { minimum: 5 }
-  validates :name, format: { with: /\s/, message: "Please provide both your first and last names."}
+  validates :name, format: { with: /\s/, message: "should be your first and last names"}
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, format: { without: /\s/, message: "Username must contain no spaces" }
