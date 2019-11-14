@@ -19,9 +19,11 @@
 body {
   background: #f8f9fa !important;
   height: 100%;
+  min-height: 100%;
 }
 
-footer {
+.navbar-footer {
+  height: 50px;
   font-size: 12px;
   padding-top: 10px;
 }

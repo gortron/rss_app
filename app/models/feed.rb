@@ -1,6 +1,7 @@
 class Feed < ActiveRecord::Base
   has_many :folder_feeds
   has_many :posts
+  validates :rss_link, uniqueness: true
 
   def build_from_url(rss_link)
     @rss_link = rss_link
