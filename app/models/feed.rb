@@ -1,13 +1,13 @@
 class Feed < ActiveRecord::Base
-  belongs_to :folder
+  has_many :folder_feeds
   has_many :posts
+  validates :rss_link, uniqueness: true
 
-  def build_from_url(args)
-    @rss_link = args["link"]
-    @folder_id = args["folder_id"].to_i
+  def build_from_url(rss_link)
+    @rss_link = rss_link
     open(@rss_link) do |rss|
       @feed = RSS::Parser.parse(rss)
-      new_feed = build_feed_from_rss
+      @built_feed = build_feed_from_rss
       @feed.items.each do |post|
         Post.create({
           title: post.title,
@@ -15,10 +15,11 @@ class Feed < ActiveRecord::Base
           description: post.description,
           author_name: post.dc_creator,
           published_time: post.pubDate,
-          feed_id: new_feed.id
+          feed_id: @built_feed.id
         })
       end
     end
+    @built_feed
   end
 
   def build_feed_from_rss
@@ -29,14 +30,13 @@ class Feed < ActiveRecord::Base
       rss_link: @rss_link,
       description: @feed.channel.description,
       #img_url: feed.image.url,
-      folder_id: @folder_id
     })
   end
 
   def format_channel_title(title)
-    title = title.split(/[\s.]/)
+    title = title.split(/[\s.:]/)
     #title = title.split
-    title.delete_if {|bit| bit == "RSS" || bit == "Feed" || bit == "com" }
+    title.delete_if {|bit| bit == "RSS" || bit == "Feed" || bit == "com" || bit == ""}
     title.join(' ')
   end
 

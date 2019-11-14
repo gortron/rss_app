@@ -19,6 +19,13 @@
 body {
   background: #f8f9fa !important;
   height: 100%;
+  min-height: 100%;
+}
+
+.navbar-footer {
+  height: 50px;
+  font-size: 12px;
+  padding-top: 10px;
 }
 
 .form-container {
@@ -50,4 +57,12 @@ img {
 
 a:hover {
   text-decoration: none !important;
+}
+
+.alert {
+  font-size: 12px;
+}
+
+.sticky-offset {
+  top: 80px;
 }

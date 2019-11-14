@@ -10,16 +10,23 @@
 # Post.destroy_all
 # Bookmark.destroy_all
 Folder.destroy_all
-Feed.destroy_all
-Post.destroy_all
+FolderFeed.destroy_all
 Bookmark.destroy_all
 
-folder = Folder.create({name: 'Tech Blogs', user_id: 11})
-f1 = Feed.new
-f2 = Feed.new
-f3 = Feed.new
-f1.build_from_url({'link' => 'https://www.engadget.com/rss.xml', 'folder_id' => folder.id})
-f2.build_from_url({'link' => 'https://feeds.feedburner.com/TechCrunch/', 'folder_id' => folder.id})
-f3.build_from_url({'link' => 'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml', 'folder_id' => folder.id})
+user = User.find(11)
+user2 = User.all.last
+
+folder = Folder.create({name: 'My Tech Blogs', user_id: user.id})
+folder2 = Folder.create({name: 'Also My Tech Blogs', user_id: user2.id})
+folder.add_feed('https://www.engadget.com/rss.xml')
+folder.add_feed('https://feeds.feedburner.com/TechCrunch/')
+folder.add_feed('https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml')
+
+folder2.add_feed('https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml')
+
+# FolderFeed.create(folder_id: folder.id, feed_id: f1.id)
+# FolderFeed.create(folder_id: folder.id, feed_id: f2.id)
+# FolderFeed.create(folder_id: folder.id, feed_id: f3.id)
+# FolderFeed.create(folder_id: folder.id, feed_id: f3.id)
 
 

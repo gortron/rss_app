@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/' => 'welcome#home', as: :welcome
+  get '/settings' => 'users#settings', as: :settings
 
   get '/signup' => 'users#new'                # sign-up page
   post '/signup' => 'users#create'            # create user > link to session start
-  post '/delete_account' => 'users#destroy'   # delete user
+  delete '/delete' => 'users#delete'          # delete user
   post '/update' => 'users#update'            # update user details
   post '/update_pw' => 'users#update_pw'            # update user details
 
@@ -13,23 +14,22 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#login'           # 'CREATE' a session
   post '/logout' => 'sessions#destroy'        # stops session
 
+  get '/add_feed' => 'feeds#new'                     # new feed form
+  post '/new_feed' => 'feeds#create_feed'        # add new feed to database
+  post '/edit_feed' => 'feeds#edit_feed'        # add new feed to database
+  
+  post '/new_folder' => 'feeds#create_folder'       # add new folder to database
+  post '/edit_folder' => 'feeds#edit_folder'        # edit folder
+  delete '/delete_folder' => 'feeds#delete_folder', as: :delete_folder # add new feed to database
+
   get '/dashboard' => 'dashboard#index', as: :dashboard # dashboard_path
+  
   post '/dashboard' => 'dashboard#new_folder_or_feed'
   post '/dashboard/refresh' => 'dashboard#refresh', as: :refresh
   get '/:username/:folder' => 'dashboard#folder_view', as: :folder
-
-  get '/settings' => 'settings#index'
-
-  get '/feeds' => 'feeds#new'
-  post '/add_feed' => 'feeds#create'
+  get '/:feed' => 'dashboard#feed_view', as: :feed
 
 
-
-  
-  #get '/:username/:folder' => 'users#folder_view', as: :folder # folder_path
-  # post '/:username/:folder' => 'users#new_folder'
-  #get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
-  # post '/:username/:folder/:feed' => 'users#new_feed'
 
   
   # Example of regular route:
