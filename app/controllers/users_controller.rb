@@ -4,14 +4,11 @@ class UsersController < ApplicationController
   end
 
   def create # this is our 'CREATE'
-    # let's add a check here to see if username is already taken
     @user = User.create(user_params)
-
     unless @user.save
       flash[:errors] = @user.errors.full_messages.to_sentence
       return redirect_to signup_path 
     end
-
     redirect_to login_path
   end
 
