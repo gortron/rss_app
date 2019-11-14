@@ -24,7 +24,7 @@ class FeedsController < ApplicationController
     def create_folder
       folder = Folder.find_or_create_by(name: params[:folder][:name], user_id: session[:user_id])
       flash[:errors] = "New Folder #{folder.name} created."
-      redirect_to feeds_path
+      redirect_to add_feed_path
     end
 
     def edit_folder

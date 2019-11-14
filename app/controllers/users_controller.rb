@@ -14,35 +14,41 @@ class UsersController < ApplicationController
     redirect_to login_path
   end
 
-  def update_pw #post route form change form
-    @user = current_user
-    @user = @user.try(:authenticate, params[:user][:old_password])
+  def settings
+    current_user
+    @feeds = @user.feeds
+  end
 
+
+  def update_pw
+    current_user
+    @user = @user.try(:authenticate, params[:user][:old_password])
     unless @user
        flash[:errors] = "Incorrect Password: Please reenter your old password."
        return redirect_to settings_path
     end
-
-    unless  params[:user][:password] == params[:user][:password_confirmation]
+    unless params[:user][:password] == params[:user][:password_confirmation]
       flash[:errors] = "Password and Confirmation don't match."
       return redirect_to settings_path
     end
-
     @user.update(user_params)
-    redirect_to settings_path #maybe to somewhere else
+    flash[:errors] = "Your password has been updated 🙌🏼"
+    redirect_to settings_path
   end
 
-  def update #post route form change form
-    @user = current_user
+  def update
+    current_user
+    byebug
     @user = @user.try(:authenticate, params[:user][:password])
+    byebug
     unless @user
        flash[:errors] = "Incorrect Password: Please reenter your password."
        return redirect_to settings_path
     end
-
     @user.update(user_params)
-  
-    redirect_to settings_path #maybe to somewhere else
+    byebug
+    flash[:errors] = "Your settings have been updated 🙌🏼"
+    redirect_to settings_path
   end
 
   def delete
@@ -61,8 +67,8 @@ class UsersController < ApplicationController
     
     @user.destroy
     
-    flash[:errors] = "Account deleted."
     reset_session
+    flash[:errors] = "🏃🏻‍♂️ Account deleted. Take care!"
     redirect_to welcome_path
   end
 

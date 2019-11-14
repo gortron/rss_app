@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/' => 'welcome#home', as: :welcome
+  get '/settings' => 'users#settings', as: :settings
 
   get '/signup' => 'users#new'                # sign-up page
   post '/signup' => 'users#create'            # create user > link to session start
@@ -28,18 +29,7 @@ Rails.application.routes.draw do
   get '/:username/:folder' => 'dashboard#folder_view', as: :folder
   get '/:feed' => 'dashboard#feed_view', as: :feed
 
-  get '/settings' => 'settings#index'
 
-  get '/feeds' => 'feeds#new'
-  post '/add_feed' => 'feeds#create'
-
-
-
-  
-  #get '/:username/:folder' => 'users#folder_view', as: :folder # folder_path
-  # post '/:username/:folder' => 'users#new_folder'
-  #get '/:username/:folder/:feed' => 'users#feed_view', as: :feed
-  # post '/:username/:folder/:feed' => 'users#new_feed'
 
   
   # Example of regular route:
