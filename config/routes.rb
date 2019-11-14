@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#login'           # 'CREATE' a session
   post '/logout' => 'sessions#destroy'        # stops session
 
-  get '/feed' => 'feeds#new'                     # new feed form
+  get '/add_feed' => 'feeds#new'                     # new feed form
   post '/new_feed' => 'feeds#create_feed'        # add new feed to database
   post '/edit_feed' => 'feeds#edit_feed'        # add new feed to database
   

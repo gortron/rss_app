@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    current_user
   end
 
   def login # this is our 'CREATE'
