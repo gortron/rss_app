@@ -7,7 +7,7 @@ class Feed < ActiveRecord::Base
     @rss_link = rss_link
     open(@rss_link) do |rss|
       @feed = RSS::Parser.parse(rss)
-      built_feed = build_feed_from_rss
+      @built_feed = build_feed_from_rss
       @feed.items.each do |post|
         Post.create({
           title: post.title,
@@ -15,10 +15,11 @@ class Feed < ActiveRecord::Base
           description: post.description,
           author_name: post.dc_creator,
           published_time: post.pubDate,
-          feed_id: built_feed.id
+          feed_id: @built_feed.id
         })
       end
     end
+    @built_feed
   end
 
   def build_feed_from_rss

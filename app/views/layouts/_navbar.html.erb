@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav ml-auto">
       <% if session[:user_id] %>
-        <li><a class="nav-item nav-link" href="/feeds">Add Feed 📰</a></li>
+        <li><a class="nav-item nav-link" href="/add_feed">Add Feed 📰</a></li>
         <li>
           <%= form_tag(refresh_path, method: 'post', class: 'navbar-item navbar-form') do %>
             <button type="submit" class="btn nav-link">Refresh ♻️</button>
