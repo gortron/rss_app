@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   before_action :current_user, only: [:index, :folder_view]
-  def index
+  def dashboard_view
     @folders = current_user.folders
     @posts = @user.posts.order('published_time DESC').limit(25)
     if @folders.empty?

@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   post '/edit_folder' => 'feeds#edit_folder'        # edit folder
   delete '/delete_folder' => 'feeds#delete_folder', as: :delete_folder # add new feed to database
 
-  get '/dashboard' => 'dashboard#index', as: :dashboard # dashboard_path
+  get '/dashboard' => 'dashboard#dashboard_view', as: :dashboard # dashboard_path
   
-  post '/dashboard' => 'dashboard#new_folder_or_feed'
+  # post '/dashboard' => 'dashboard#new_folder_or_feed'
   post '/dashboard/refresh' => 'dashboard#refresh', as: :refresh
   get '/:username/:folder' => 'dashboard#folder_view', as: :folder
   get '/:feed' => 'dashboard#feed_view', as: :feed
