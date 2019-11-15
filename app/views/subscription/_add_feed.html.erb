@@ -9,8 +9,8 @@
 
     <div class="form-group">
 
-        <%= f.label :feed, "Folder Name"%>
-        <%= f.collection_select :feed, :folder_id, @user.folders, :id, :name %>
+        <%= f.label :folder, "Folder Name"%>
+        <%= f.collection_select :folder_id, @user.folders, :id, :name %>
 
 
     </div> 
