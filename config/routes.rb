@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'           # 'CREATE' a session
   post '/logout' => 'sessions#destroy'        # stops session
 
-  get '/add_feed' => 'feeds#new'                     # new feed form
-  post '/new_feed' => 'feeds#create_feed'        # add new feed to database
-  post '/edit_feed' => 'feeds#edit_feed'        # add new feed to database
+  get '/add_feed' => 'subscription#new'                     # new feed form
+  post '/new_feed' => 'subscription#create_feed'        # add new feed to database
+  post '/edit_feed' => 'subscription#edit_feed'        # add new feed to database
   
-  post '/new_folder' => 'feeds#create_folder'       # add new folder to database
-  post '/edit_folder' => 'feeds#edit_folder'        # edit folder
-  delete '/delete_folder' => 'feeds#delete_folder', as: :delete_folder # add new feed to database
+  post '/new_folder' => 'subscription#create_folder'       # add new folder to database
+  post '/edit_folder' => 'subscription#edit_folder'        # edit folder
+  delete '/delete_folder' => 'subscription#delete_folder', as: :delete_folder # add new feed to database
 
   get '/dashboard' => 'dashboard#dashboard_view', as: :dashboard # dashboard_path
   

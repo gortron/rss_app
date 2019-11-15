@@ -1,4 +1,4 @@
-class FeedsController < ApplicationController
+class SubscriptionController < ApplicationController
 
   def new
     current_user

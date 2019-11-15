@@ -1,0 +1,4 @@
+<% @user.folders.each do |folder| %>
+    <%= folder.name %>
+    <%= link_to 'Delete', delete_folder_path, method: :delete, data: { confirm: 'For real?' } %><br>
+<% end %>

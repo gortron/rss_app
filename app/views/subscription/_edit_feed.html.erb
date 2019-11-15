@@ -1,0 +1,6 @@
+<%= form_tag ({controller: 'feeds', action: 'edit_feed', method: 'post'}) do %>
+    Feed | New Name <br>
+    <%= collection_select(:folder, :folder_id, @user.folders, :id, :name) %>
+    <%= text_field(:folder, :new_name) %>
+    <input type=submit value='submit changes'>
+<%end%>
