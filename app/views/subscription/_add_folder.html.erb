@@ -1,11 +1,8 @@
-<%= form_tag ({controller: 'subscription', action: 'create_folder', method: 'post'}) do %>
+<%# form_tag ({controller: 'subscription', action: 'create_folder', method: 'post'}) do %>
+<%= form_for @folder, url: '/create_folder', method: :post do |f|%>
     <div class="form-group">
-        <div class="form-row">
-            <div class="col-5">
-                <label>Folder Name: </label>
-                <%= text_field(:folder, :name) %>
-            </div>
-        </div>
+        <%= f.label :name, "Folder Name"%>
+        <%= f.text_field :name, class: "form-control", placeholder: "Folder Name" %>
     </div> 
-    <input type=submit value='add folder'>
+    <%= f.submit 'Add Folder', class="btn btn-default btn-primary btn-block">
 <% end %>

@@ -1,35 +1,37 @@
-<% if @user.folders.size == 0 %>
+<div class="container">
+  <div class="col-8">
+  <% if @user.folders.size == 0 %>
 
-<h3>Add Folder</h3>
+    <div class="card">
+      <h5 class="card-title text-center">Add Folder</h5>
+      <div class="card-body">
+        <%= render "add_folder"%>
+      </div>
+    </div> 
 
-  <div class="card">
-    <div class="card-body">
-      <%= render "add_folder"%>
-    </div>
-  </div> 
+  <% else %>
 
-<% else %>
+    <div class="card">
+    <h5 class="card-title text-center">Add Feed</h5>
+      <div class="card-body">
+        <%= render "add_feed"%>
+      </div>
+    </div> 
 
-  <h3>Add Feed</h3>
-  <div class="card">
-    <div class="card-body">
-      <%= render "add_feed"%>
-    </div>
-  </div> 
+    <div class="card">
+      <h5 class="card-title text-center">Add Folder</h5>
+      <div class="card-body">
+        <%= render "add_folder"%>
+      </div>
+    </div> 
 
+    <div class="card">
+      <h5 class="card-title text-center">Edit Folder</h5>
+      <div class="card-body">
+        <%= render "edit_folder"%>
+      </div>
+    </div> 
 
-  <h3>Add Folder</h3>
-  <div class="card">
-    <div class="card-body">
-      <%= render "add_folder"%>
-    </div>
-  </div> 
-
-   <h3>Edit Folder</h3>
-  <div class="card">
-    <div class="card-body">
-      <%= render "edit_folder"%>
-    </div>
-  </div> 
-
-<% end %>
+  <% end %>
+  </div>
+</div>
