@@ -7,7 +7,7 @@
 ## Motivation
 
 - We wanted to deploy our first webapp, after a week of learning Rails.
-- We like code that has a _raîson d'étre_. While gRSSly isn't the first RSS reader, it's a useful utility nonetheless.
+- We like code that has a _raison d'être_. While gRSSly isn't the first RSS reader, it's a useful utility nonetheless.
 - We aimed to stretch ourselves by implementing not just Rails, but unfamiliar tools like Postgres and Bootstrap as well.
 - We wanted to make our app accessible by deploying it to the web.
 
