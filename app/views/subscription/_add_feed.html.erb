@@ -1,18 +1,22 @@
 
-<%= form_for @feed, url: '/create_feed', method: :post do |f|%>
+<%= form_tag ({controller: 'subscription', action: 'create_feed', method: 'post'}) do %>
         
     <div class="form-group">
-
-        <%= f.label :link, "Feed URL"%>
-        <%= f.text_field :link, class: "form-control", placeholder: "Feed URL" %>
+        <div class="form-row">
+        <div class="col-5">
+            <label>Feed URL: </label>
+            <%= text_field(:feed, :link) %>
+        </div>
+        </div>
     </div> 
 
     <div class="form-group">
-
-        <%= f.label :folder, "Folder Name"%>
-        <%= f.collection_select :folder_id, @user.folders, :id, :name %>
-
-
+        <div class="form-row">
+            <div class="col-5">
+                <label>Folder Name: </label>
+                <%= collection_select(:feed, :folder_id, @user.folders, :id, :name) %>
+            </div>
+        </div>
     </div> 
         
     <input type=submit value='add feed'>

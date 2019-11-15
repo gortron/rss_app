@@ -5,8 +5,7 @@ class SubscriptionController < ApplicationController
     if @user.folders.size == 0
       flash[:errors] = "Seems like you don't have any folders. Let's set up one now."
     end
-    @folder = Folder.new
-    @feed = Feed.new
+
   end
 
   def create_feed
