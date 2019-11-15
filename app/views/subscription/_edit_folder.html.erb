@@ -1,4 +1,4 @@
-<%= form_tag ({controller: 'feeds', action: 'edit_folder', method: 'post'}) do %>
+<%= form_tag ({controller: 'subscription', action: 'edit_folder', method: 'post'}) do %>
     Folder | New Name <br>
     <%= collection_select(:folder, :folder_id, @user.folders, :id, :name) %>
     <%= text_field(:folder, :new_name) %>

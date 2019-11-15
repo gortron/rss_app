@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     unless @user.save
       flash[:errors] = @user.errors.full_messages.to_sentence
-      return render :new
+      return render :signup
     end
     flash[:errors] = "Account created! Please re-enter your credentials. No 🤖s allowed."
     redirect_to login_path
