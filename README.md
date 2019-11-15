@@ -1,6 +1,6 @@
 # 🐻 gRSSly
 
-[gRSSly](https://www.grssly.com) is a lightweight, open-source RSS reader built by Gordy Lanza and Flo Stagliano. We built it in a week with Rails, Postgres, and Bootstrap.
+[gRSSly](http://www.grssly.com) is a lightweight, open-source RSS reader built by Gordy Lanza and Flo Stagliano. We built it in a week with Rails, Postgres, and Bootstrap.
 
 ![Image of gRSSly](https://i.imgur.com/DRZ0dyk.png)
 
@@ -21,7 +21,7 @@
 ## Comments
 
 - To the Bootstrap diehards, please forgive us for our shameless misuse of the `.alert` component and `flash[:errors]` as a way to feed contextual information to users.
-- To our mentor @danielkaczmarczyk, please forgive us for our shameless ~~misuse~~ _abuse_ of emojis. We're just giving the people what they want.
+- To our mentor @danielkaczmarczyk, please forgive us for our shameless ~~misuse~~ _abuse_ of emojis. We're just giving the people what they want. 😎
 - We were hard-pressed to build and deploy our first app in a week. Known issues we did not have time to resolve are logged in the repo.
 
 ## License
