@@ -10,7 +10,7 @@ class SubscriptionController < ApplicationController
 
   def create_feed
     @folder = Folder.find(params[:feed][:folder_id])
-    @folder.add_feed(params[:feed][:link])
+    @folder.try(:add_feed(params[:feed][:link]))
     flash[:errors] = "Feed added to #{@folder.name}."
     redirect_to dashboard_path
   end
