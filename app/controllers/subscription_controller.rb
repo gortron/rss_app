@@ -5,19 +5,17 @@ class SubscriptionController < ApplicationController
     if @user.folders.size == 0
       flash[:errors] = "Seems like you don't have any folders. Let's set up one now."
     end
-
+    flash[:errors] = "Most blogs and websites manage their own RSS Feeds. Try googling 'rss <site name>'. If the link ends in 'rss.xml', you've found the right link. Paste it below in 'Feed URL'!"
   end
 
   def create_feed
     @folder = Folder.find(params[:feed][:folder_id])
-    @folder.try(:add_feed(params[:feed][:link]))
+    @folder.add_feed(params[:feed][:link])
     flash[:errors] = "Feed added to #{@folder.name}."
     redirect_to dashboard_path
   end
 
   def delete_feed
-    byebug
-    # delete action
     flash[:errors] = "New Folder #{folder.name} deleted."
     redirect_to feeds_path
   end
