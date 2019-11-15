@@ -2,14 +2,12 @@
  <%= form_for @user, url: '/delete', method: :delete do |f|%>
 
     <div class="form-group">
-    <div class="form-row">
-        <div class="col-5">
+
         <%= f.label :password, "Enter Password to Confirm Deletion"%>
         <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-        </div>
-    </div>
+
     </div> 
 
-    <%= f.submit "Delete Account", class: "btn btn-default btn-primary" %>
+    <%= f.submit "Delete Account", class: "btn btn-default btn-warning btn-block" %>
 
 <%end%>
