@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
 
-  def new
+  def signup
+    if session[:user_id]
+      return redirect_to dashboard_path
+    end
     @user = User.new
   end
 

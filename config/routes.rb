@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   get '/' => 'welcome#home', as: :welcome
   get '/settings' => 'users#settings', as: :settings
 
-  get '/signup' => 'users#new'                # sign-up page
+  get '/signup' => 'users#signup'                # sign-up page
   post '/signup' => 'users#create'            # create user > link to session start
   delete '/delete' => 'users#delete'          # delete user
   post '/update' => 'users#update'            # update user details
   post '/update_pw' => 'users#update_pw'            # update user details
 
-  get '/login' => 'sessions#new'              # login page
-  post '/login' => 'sessions#login'           # 'CREATE' a session
+  get '/login' => 'sessions#login'   # login page
+  post '/login' => 'sessions#create'           # 'CREATE' a session
   post '/logout' => 'sessions#destroy'        # stops session
 
   get '/add_feed' => 'feeds#new'                     # new feed form

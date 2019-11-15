@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
-  def new
+  def login
     current_user
   end
 
-  def login # this is our 'CREATE'
+  def create # this is our 'CREATE'
     @user = User.find_by(username: params[:user][:username])
     @user = @user.try(:authenticate, params[:user][:password])
     unless @user
