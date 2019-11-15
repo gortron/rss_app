@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post '/new_folder' => 'subscription#create_folder'       # add new folder to database
   post '/edit_folder' => 'subscription#edit_folder'        # edit folder
   delete '/delete_folder' => 'subscription#delete_folder', as: :delete_folder # add new feed to database
+  delete '/delete_feed' => 'subscription#delete_feed' # add new feed to database
 
   get '/dashboard' => 'dashboard#dashboard_view', as: :dashboard # dashboard_path
   

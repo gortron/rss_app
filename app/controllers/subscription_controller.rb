@@ -15,6 +15,7 @@ class SubscriptionController < ApplicationController
   end
 
   def delete_feed
+    byebug
     # delete action
     flash[:errors] = "New Folder #{folder.name} deleted."
     redirect_to feeds_path
@@ -31,7 +32,7 @@ class SubscriptionController < ApplicationController
     folder = Folder.find_by(id: folder_params[:folder_id])
     folder.update(name: folder_params[:new_name])
     flash[:errors] = "Folder renamed to #{folder_params[:new_name]}."
-    redirect_to settings_path 
+    redirect_to add_feed_path
   end
 
   def delete_folder
@@ -51,7 +52,6 @@ class SubscriptionController < ApplicationController
   end
 
   def folder_params
-    byebug
     params.require(:folder).permit(:new_name, :folder_id)
   end
   

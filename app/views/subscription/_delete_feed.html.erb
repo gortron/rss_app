@@ -1,0 +1,10 @@
+<%= form_tag ({controller: 'subscription', url: '/delete_feed', method: 'delete'}) do %>
+    <% @user.folders.each do |folder| %>
+    
+        <% folder.feeds.each do |feed| %>
+            <%= check_box_tag "feed", feed.id %> | <%= feed.title %> <br>
+        <% end %>
+        <br>
+        <input type=submit value='delete'>
+    <%end%>
+<%end%>
